@@ -7,26 +7,28 @@ const Work = require('../models/workModel')
 // @route   GET /api/goals
 // @access  Private
 const getWorkOrders = asyncHandler(async (req, res) => {
-  const goals = await Work.find({ user: req.user.id })
+  const works = await Work.find({ user: req.user.id })
 
-  res.status(200).json(goals)
+  res.status(200).json(works)
 })
 
 // @desc    Set goal
 // @route   POST /api/goals
 // @access  Private
 const addWork = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  if (!req.body.cleanerName && !req.body.calendar && !req.body.hours) {
     res.status(400)
-    throw new Error('Please add a text field')
+    throw new Error('Please add a all fields')
   }
 
-  const goal = await Work.create({
-    text: req.body.text,
+  const work = await Work.create({
+    cleanerName: req.body.cleanerName,
+    calendar: req.body.calendar,
+    hours: req.body.hours,
     user: req.user.id
   })
 
-  res.status(200).json(goal)
+  res.status(200).json(work)
 })
 
 // @desc    Delete goal
