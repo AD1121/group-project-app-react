@@ -7,7 +7,7 @@ const workSchema = mongoose.Schema(
       required: true,
       ref: 'User'
     },
-    worker: {
+    cleanerName: {
       type: String,
       required: true
     },
@@ -15,7 +15,7 @@ const workSchema = mongoose.Schema(
       type: Date,
       required: true
     },
-    timeForWork: {
+    hours: {
       type: Date,
       required: true
     }
