@@ -12,11 +12,11 @@ const workSchema = mongoose.Schema(
       required: true
     },
     calendar: {
-      type: Date,
+      type: String,
       required: true
     },
     hours: {
-      type: Date,
+      type: String,
       required: true
     }
   },
