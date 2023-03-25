@@ -54,7 +54,7 @@ const deleteWork = asyncHandler(async (req, res) => {
     throw new Error('User not authorized')
   }
 
-  await work.remove()
+  await work.deleteOne()
 
   res.status(200).json({ id: req.params.id })
 })
