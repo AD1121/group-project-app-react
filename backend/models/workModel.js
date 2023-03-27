@@ -18,6 +18,10 @@ const workSchema = mongoose.Schema(
     hours: {
       type: String,
       required: true
+    },
+    level: {
+      type: String,
+      required: true
     }
   },
   {

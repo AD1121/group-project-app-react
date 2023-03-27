@@ -16,7 +16,12 @@ const getWorkOrders = asyncHandler(async (req, res) => {
 // @route   POST /api/goals
 // @access  Private
 const addWork = asyncHandler(async (req, res) => {
-  if (!req.body.cleanerName && !req.body.calendar && !req.body.hours) {
+  if (
+    !req.body.cleanerName &&
+    !req.body.calendar &&
+    !req.body.hours &&
+    !req.body.level
+  ) {
     res.status(400)
     throw new Error('Please add a all fields')
   }
@@ -25,6 +30,7 @@ const addWork = asyncHandler(async (req, res) => {
     cleanerName: req.body.cleanerName,
     calendar: req.body.calendar,
     hours: req.body.hours,
+    level: req.body.level,
     user: req.user.id
   })
 
