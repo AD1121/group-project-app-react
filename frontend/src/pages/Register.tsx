@@ -1,9 +1,9 @@
 import './login.css'
 
-export default function Login() {
+export default function Register() {
   return (
     <div className="center">
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form method="post">
         <div className="txt_field">
           <input type="text" required />
@@ -18,7 +18,7 @@ export default function Login() {
         {/* <div className="pass">Forgot Password?</div> */}
         <input type="submit" value="Login" />
         <div className="signup_link">
-          Already member? <a href="#">Login</a>
+          Not a member? <a href="#">Signup</a>
         </div>
       </form>
     </div>
