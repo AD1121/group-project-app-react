@@ -9,7 +9,7 @@ export default function Menu() {
         <li className='push-right'> <Link className='links' to='/'>Home</Link> </li>
         <li> <Link className='links' to='/about'>About </Link></li>
         <li> <Link className='links' to='/contact'>Contact</Link> </li>
-        <li><button className='btn-user'>Login<i className="fa-solid fa-user"></i></button></li>
+        <li className='border'> <Link className='links' to='/login'> Login <i className="fa-solid fa-user"></i></Link></li>
       </ul>
     </div>
   )
