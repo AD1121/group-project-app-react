@@ -1,0 +1,23 @@
+ul {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Dancing Script', cursive;
+  color: #fff;
+  font-size: 22px;
+  list-style-type: none;
+  margin: 2% 2%;
+}
+
+li {
+  margin: 0 2%;
+}
+
+.push-right {
+  margin-left: auto;
+}
+
+.links {
+  color: #fff;
+  text-decoration: none;
+}
+
