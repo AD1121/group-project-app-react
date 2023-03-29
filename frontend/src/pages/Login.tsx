@@ -1,31 +1,62 @@
+import React, { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import './login.css'
 
-export default function Login() {
+type LoginFormProps = {
+  onLogin: (token: string) => void;
+};
+
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+  const [username, setUserName] = useState("")
+  const [password, setPassword] = useState("")
 
   let navigate = useNavigate()
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      onLogin(data.accessToken)
+
+      console.log(data.token);
+      
+      localStorage.setItem("accessToken", data.token)
+
+      if (data.token) {
+        navigate('/userspage')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
-    <div className="center">
-      <h1>Login</h1>
-      <form method="post">
-        <div className="txt_field">
-          <input type="text" required />
-          <span></span>
-          <label>Username</label>
-        </div>
-        <div className="txt_field">
-          <input type="password" required />
-          <span></span>
-          <label>Password</label>
-        </div>
-        <div className="pass">Forgot Password?</div>
-        <input type="submit" value="Login" />
-        {/* <input type="submit" value="cancel" /> */}
-        <div className="signup_link">
-          Not a  member? <a onClick={()=>navigate('/register')}>register</a> 
-        </div>
-      </form>
-    </div>
-  )
-}
+    <form onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default LoginForm;
