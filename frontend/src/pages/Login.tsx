@@ -24,12 +24,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       const data = await response.json();
       onLogin(data.accessToken)
 
-      console.log(data.token);
+      const user = data.name
       
       localStorage.setItem("accessToken", data.token)
 
       if (data.token) {
-        navigate('/userspage')
+        navigate(`/userspage/${user}`)
       }
     } catch (error) {
       console.error(error);

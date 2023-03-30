@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-
+import { useParams } from "react-router-dom"
+import './userpage.css'
 
 export default function Userpage() {
   const [cleanerName, setCleanerName] = useState("")
@@ -11,10 +12,7 @@ export default function Userpage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('accessToken');
-
-      console.log(token);
       
-
       const response = await fetch("/api/works", {
         method: "POST",
         headers: {
@@ -26,70 +24,94 @@ export default function Userpage() {
       });
       const data = await response.json()
 
-      console.log(data);
-      console.log(cleanerName);
-      
+      console.log(data)
+
+      setCleanerName('')
+      setCalendar('')
+      setHours('')
+      setLevel('')
 
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
+  let {user} = useParams()
+
   return (
     <>
-     <h1>Welcome user</h1>
-     <br />
-     <form onSubmit={handleSubmit}>
-        <label>Choose a cleaner:</label>
-        <select name="states" onChange={e => setCleanerName(e.target.value)} >
-          <option value="Erik">Erik</option>
-          <option value="Lisa">Lisa</option>
-          <option value="Charles">Charles</option>
-          <option value="Linda">Linda</option>
-        </select><br />
-        <label>Date:</label>
-        <input 
-        type="date" 
-        onChange={e => setCalendar(e.target.value)}
-        />
-        <label >Select a time:</label>
-        <input 
-        type="time" 
-        onChange={e => setHours(e.target.value)}  
-        />
-         <input
-          type="radio" 
-          name='radio' 
-          value="Basic" 
-          onChange={e => setLevel(e.target.value)}
-          />
-         <label>Basic</label><br />
-         <input 
-          type="radio" 
-          name='radio' 
-          value="Top" 
-          onChange={e => setLevel(e.target.value)} 
-          />
-         <label >Top</label><br />
-         <input 
-          type="radio" 
-          name='radio' 
-          value="Diamond" 
-          onChange={e => setLevel(e.target.value)}
-          />
-         <label>Diamond</label>
-         <input 
-          type="radio"
-          name='radio' 
-          value="Window" 
-          onChange={e => setLevel(e.target.value)}
-         />
-         <label>Window</label>
-
-
-         <input className="booking" type="submit" />
-         
-      </form>
+      <div >
+        <h1 className="title">Welcome {user}</h1>
+        <br />
+          <form onSubmit={handleSubmit} className="form-design">
+              <label>Choose a cleaner:</label>
+              <br />
+              <select
+               name="states"
+               className="cleaner" 
+               onChange={e => setCleanerName(e.target.value)} 
+               >
+                <option value="Erik">Erik</option>
+                <option value="Lisa">Lisa</option>
+                <option value="Charles">Charles</option>
+                <option value="Linda">Linda</option>
+              </select>
+              <br />
+              <br />
+              <label>Date:</label>
+              <br />
+              <input 
+              type="date" 
+              className="date" 
+              onChange={e => setCalendar(e.target.value)}
+              />
+              <label >Select a time: </label>
+              <input 
+              type="time" 
+              className="time" 
+              onChange={e => setHours(e.target.value)}  
+              />
+            
+              <br />
+              <br />
+              <div className="column">
+                <input
+                type="radio" 
+                name='radio' 
+                value="Basic" 
+                onChange={e => setLevel(e.target.value)}
+                />
+              <label>Basic</label><br />
+               <input 
+                type="radio" 
+                name='radio' 
+                value="Top" 
+                onChange={e => setLevel(e.target.value)} 
+                />
+               <label >Top</label><br />
+               <input 
+                type="radio" 
+                name='radio' 
+                value="Diamond" 
+                onChange={e => setLevel(e.target.value)}
+                />
+               <label>Diamond</label>
+            <br />
+              <input 
+                type="radio"
+                name='radio' 
+                value="Window" 
+                onChange={e => setLevel(e.target.value)}
+              />
+               <label>Window</label>
+            
+              </div>
+              <div className="btn-submit">
+                <input className="booking" type="submit" />
+              </div>
+              
+            </form>
+        </div>
     </>
   )
 }

@@ -29,7 +29,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route  path='/login' element={<Login onLogin={handleLogin}/>} />
           <Route path='/register' element={<Register />} />
-          <Route path='/userspage' element={<Userspage />} />
+          <Route path='/userspage/:user' element={<Userspage />} />
           <Route path='*' element={<h1>Page not found 404</h1>} />
         </Routes>
       </Router>

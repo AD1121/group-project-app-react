@@ -1,0 +1,35 @@
+.form-design {
+  margin-left: auto;
+  color: #fff;
+  width: 80%;
+}
+
+.cleaner {
+  width: 80%;
+}
+
+.date {
+  width: 40%;
+  margin-right: 5%;
+}
+
+.time {
+  width: 25%;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  row-gap: 5%;
+  width: 80%;
+}
+
+.btn-submit {
+  width: 80%;
+}
+
+.title {
+  color: #fff;
+  margin-left: auto;
+  width: 80%;
+}
