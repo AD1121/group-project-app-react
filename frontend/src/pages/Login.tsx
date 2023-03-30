@@ -37,25 +37,32 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+  <div className="center">
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="txt_field">
+          <input 
+          type="text" 
+          required 
+          onChange={e => setUserName(e.target.value)}/>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div className="txt_field">
+          <input 
+          type="password" 
+          required 
+          onChange={e => setPassword(e.target.value)}/>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div className="pass">Forgot Password?</div>
+        <input type="submit" value="Login" />
+        <div className="signup_link">
+          Not a member? <a onClick={()=>navigate('/register')}>register</a> 
+        </div>
+      </form>
+    </div>
   );
 };
 
