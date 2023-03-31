@@ -22,7 +22,7 @@ export default function Userpage() {
         },
         
         body: JSON.stringify({ cleanerName, calendar, hours, level}),
-      });
+      })
       const data = await response.json()
 
       console.log(data)
