@@ -6,7 +6,7 @@ type LoginFormProps = {
 };
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
-  const [username, setUserName] = useState("")
+  const [user, setUser] = useState("")
   const [password, setPassword] = useState("")
 
   let navigate = useNavigate()
@@ -19,17 +19,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ user, password }),
       });
       const data = await response.json();
       onLogin(data.accessToken)
 
-      const user = data.name
+      const users = data.name
+
+      console.log(user);
+      
       
       localStorage.setItem("accessToken", data.token)
 
       if (data.token) {
-        navigate(`/userspage/${user}`)
+        navigate(`/userspage/${users}`)
       }
     } catch (error) {
       console.error(error);
@@ -44,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           <input 
           type="text" 
           required 
-          onChange={e => setUserName(e.target.value)}/>
+          onChange={e => setUser(e.target.value)}/>
           <span></span>
           <label>Username</label>
         </div>
