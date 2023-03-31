@@ -15,7 +15,7 @@ function App() {
 
   const handleLogin = (token: string) => {
     setAccessToken(token)
-    console.log(token);
+    console.log(accessToken);
     
   };
 
