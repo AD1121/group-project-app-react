@@ -1,0 +1,30 @@
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 5%;
+  width: 80%;
+  margin: 0;
+}
+
+.booking-li {
+  background-color: rgb(103, 176, 250);
+  padding: 10px;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+span{
+  padding-left: 10%;
+}
+
+.delete {
+  margin-left: 10%;
+  background-color: red;
+  border: none;
+  padding: 0 6px;
+  color: #fff;
+  border-radius: 4px;
+}

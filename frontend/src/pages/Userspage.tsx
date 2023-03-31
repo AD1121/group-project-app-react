@@ -112,8 +112,11 @@ export default function Userpage() {
               </div>
               
             </form>
-
-            <BookingList />
+            <br />
+            <div className="form-design">
+              <BookingList />
+            </div>
+           
         </div>
     </>
   )
