@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import './userpage.css'
+import BookingList from "../components/BookingList"
 
 export default function Userpage() {
   const [cleanerName, setCleanerName] = useState("")
@@ -111,6 +112,8 @@ export default function Userpage() {
               </div>
               
             </form>
+
+            <BookingList />
         </div>
     </>
   )
