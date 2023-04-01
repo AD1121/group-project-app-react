@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const Work = require('../models/workModel')
 // const User = require('../models/userModel')
 
-// @desc    Get goals
+// @desc    Get bookings
 // @route   GET /api/goals
 // @access  Private
 const getWorkOrders = asyncHandler(async (req, res) => {
@@ -12,7 +12,7 @@ const getWorkOrders = asyncHandler(async (req, res) => {
   res.status(200).json(works)
 })
 
-// @desc    Set goal
+// @desc    Add booking
 // @route   POST /api/goals
 // @access  Private
 const addWork = asyncHandler(async (req, res) => {
@@ -37,8 +37,8 @@ const addWork = asyncHandler(async (req, res) => {
   res.status(200).json(work)
 })
 
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
+// @desc    Delete Booking
+// @route   DELETE /api/works/:id
 // @access  Private
 const deleteWork = asyncHandler(async (req, res) => {
   const work = await Work.findById(req.params.id)
@@ -54,7 +54,7 @@ const deleteWork = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
-  // Make sure the logged in user matches the goal user
+  // Make sure the logged in user matches the booked user
   if (work.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized')

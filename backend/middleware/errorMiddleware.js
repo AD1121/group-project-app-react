@@ -1,3 +1,4 @@
+// Converting nodejs errors from html to more readable messages
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500
 

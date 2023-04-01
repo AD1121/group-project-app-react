@@ -8,6 +8,7 @@ const {
 } = require('../controllers/useController')
 const { protect } = require('../middleware/authMiddleware')
 
+// Declaring API for controllers
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/me', protect, getMe)
