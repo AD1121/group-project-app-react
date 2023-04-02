@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import './userpage.css'
 import BookingList from "../components/BookingList"
+import FinishedBooking from "../components/FinishedBooking"
 
 export default function Userpage() {
   const [cleanerName, setCleanerName] = useState("")
@@ -110,6 +111,7 @@ export default function Userpage() {
             <br />
             <div className="form-design">
               <BookingList />
+              <FinishedBooking />
             </div>
            
         </div>
