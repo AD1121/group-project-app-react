@@ -15,9 +15,7 @@ function App() {
 
   const handleLogin = (token: string) => {
     setAccessToken(token)
-    console.log(accessToken);
-    
-  };
+  }
 
   return (
     <div className="App">
@@ -37,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
