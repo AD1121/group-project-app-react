@@ -27,8 +27,7 @@ export default function BookingList() {
 
       const data = await response.json();
       setPosts(data);
-
-    };
+    }
 
     fetchPosts();
   })
