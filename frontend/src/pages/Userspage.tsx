@@ -17,21 +17,25 @@ export default function Userpage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('accessToken');
-      
-      const response = await fetch("/api/works", {
+      const token = localStorage.getItem('accessToken')
+
+      console.log(cleanerName);
+
+      if (cleanerName) {
+          const response = await fetch("/api/works", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
         },
-        
-        body: JSON.stringify({ cleanerName, calendar, hours, level}),
-      })
-      const data = await response.json()
-
-      console.log(data)
       
+        body: JSON.stringify({ cleanerName, calendar, hours, level}),
+    })
+    const data = await response.json() 
+      
+      } 
+
+     
     } catch (error) {
       console.error(error)
     }
@@ -42,7 +46,6 @@ export default function Userpage() {
  if (user === 'Charles' || user === 'Erik' || user === 'Lisa' || user === 'Linda' ) {
     worker = true
  }
-  
 
   return (
     <>
@@ -59,6 +62,7 @@ export default function Userpage() {
            className="cleaner" 
            onChange={e => setCleanerName(e.target.value)} 
            >
+            <option value=""></option>
             <option value="Erik">Erik</option>
             <option value="Lisa">Lisa</option>
             <option value="Charles">Charles</option>
