@@ -83,35 +83,36 @@ export default function Userpage() {
           <br />
           <br />
           <div className="column">
+            <label>
             <input
             type="radio" 
             name='radio' 
             value="Basic" 
             onChange={e => setLevel(e.target.value)}
             />
-          <label>Basic</label><br />
+           Basic</label>
+           <label>
            <input 
             type="radio" 
             name='radio' 
             value="Top" 
             onChange={e => setLevel(e.target.value)} 
+            />Top</label>
+            <label>
+            <input 
+              type="radio" 
+              name='radio' 
+              value="Diamond" 
+              onChange={e => setLevel(e.target.value)}
             />
-           <label >Top</label><br />
-           <input 
-            type="radio" 
-            name='radio' 
-            value="Diamond" 
-            onChange={e => setLevel(e.target.value)}
-            />
-           <label>Diamond</label>
-        <br />
-          <input 
-            type="radio"
-            name='radio' 
-            value="Window" 
-            onChange={e => setLevel(e.target.value)}
-          />
-           <label>Window</label>
+            Diamond</label>
+            <label>
+            <input 
+              type="radio"
+              name='radio' 
+              value="Window" 
+              onChange={e => setLevel(e.target.value)}
+            />Window</label>
         
           </div>
           <div className="btn-submit">

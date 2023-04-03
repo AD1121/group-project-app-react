@@ -17,6 +17,10 @@ function App() {
     setAccessToken(token)
   }
 
+  const handleRegister = (token: string) => {
+    setAccessToken(token)
+  }
+
   return (
     <div className="App">
       <Router>
@@ -26,7 +30,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route  path='/login' element={<Login onLogin={handleLogin}/>} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register onRegister={handleRegister}/>} />
           <Route path='/userspage/:user' element={<Userspage />} />
           <Route path='*' element={<h1>Page not found 404</h1>} />
         </Routes>

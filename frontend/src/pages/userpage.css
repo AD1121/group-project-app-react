@@ -33,3 +33,7 @@
   margin-left: auto;
   width: 80%;
 }
+
+input[type="radio"]{
+    vertical-align: baseline;
+}
