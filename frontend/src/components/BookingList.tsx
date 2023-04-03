@@ -9,14 +9,26 @@ interface IPost {
   level: string;
 }
 
-export default function BookingList() {
+interface IUser {
+  userName: string | undefined
+}
+
+export default function BookingList({userName}: IUser) {
 
   const [posts, setPosts] = useState<IPost[]>([])
 
   const token = localStorage.getItem('accessToken')
 
+  let worker: boolean = false
+
+  if (userName === 'Charles') {
+     worker = true
+  }
+
   useEffect(() => {
-    const fetchPosts = async () => {
+
+    if (!worker) {
+      const fetchPosts = async () => {
       const response = await fetch("/api/works", {
             method: "GET",
             headers: {
@@ -25,15 +37,30 @@ export default function BookingList() {
             },
           })
 
-      const data = await response.json();
-      setPosts(data);
+      const data = await response.json()      
+      setPosts(data)
     }
 
     fetchPosts();
+    } else {
+      const fetchPosts = async () => {
+        const response = await fetch("/api/works/all", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json"
+              },
+            })
+  
+        const data = await response.json()      
+        setPosts(data)
+      }
+  
+      fetchPosts();
+    }
+    
   })
 
   const handleDelete = async (id: string) => {
-    
     try {
       const token = localStorage.getItem('accessToken');
       
@@ -53,11 +80,22 @@ export default function BookingList() {
   }
 
   return (
-    <div>
-      <h3>Bookings:</h3>
-      <ul className="booking-list">
-      {posts.map(booking => <li className='booking-li' key={booking._id}> {booking.calendar} <span> {booking.hours} </span> <span> {booking.cleanerName} </span> <span> {booking.level} </span> <button className='delete' onClick={() => handleDelete(booking._id)}><i className="fa-solid fa-trash"></i></button> </li>)}
-      </ul>
-    </div>
+   <>
+      {!worker ? (
+        <div> 
+          <h3>Bookings:</h3>
+          <ul className="booking-list">
+          {posts.map(booking => <li className='booking-li' key={booking._id}> {booking.calendar} <span> {booking.hours} </span> <span> {booking.cleanerName} </span> <span> {booking.level} </span> <button className='delete' onClick={() => handleDelete(booking._id)}><i className="fa-solid fa-trash"></i></button> </li>)}
+          </ul>
+        </div>
+      ) : (
+        <div> 
+          <h3>Bookings:</h3>
+          <ul className="booking-list">
+          {posts.map(booking => <li className='booking-li' key={booking._id}> {booking.calendar} <span> {booking.hours} </span> <span> {booking.cleanerName} </span> <span> {booking.level} </span> </li>)}
+          </ul>
+        </div>
+      )}
+    </>
   )
 }

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 type LoginFormProps = {
   onLogin: (token: string) => void;
-};
+}
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [name, setName] = useState("")
@@ -33,9 +33,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         navigate(`/userspage/${users}`)
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
+  
 
   return (
   <div className="center">
@@ -64,7 +65,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default LoginForm;
