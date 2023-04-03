@@ -39,7 +39,7 @@ export default function Userpage() {
 
   let worker: boolean = false
 
- if (user === 'Charles') {
+ if (user === 'Charles' || user === 'Erik' || user === 'Lisa' || user === 'Linda' ) {
     worker = true
  }
   

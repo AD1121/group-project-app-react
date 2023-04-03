@@ -21,9 +21,9 @@ export default function BookingList({userName}: IUser) {
 
   let worker: boolean = false
 
-  if (userName === 'Charles') {
-     worker = true
-  }
+  if (userName === 'Charles' || userName === 'Erik' || userName === 'Lisa' || userName === 'Linda' ) {
+    worker = true
+ }
 
   useEffect(() => {
 

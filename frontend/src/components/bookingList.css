@@ -2,22 +2,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  row-gap: 5%;
   width: 80%;
   margin: 0;
 }
 
 .booking-li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  row-gap: 2%;
   background-color: rgb(103, 176, 250);
   padding: 10px;
 }
 
-ol, ul {
+ul {
   padding-left: 0;
 }
 
 span{
-  padding-left: 10%;
+  /* padding-left: 10%; */
 }
 
 .delete {
