@@ -3,8 +3,17 @@ const asyncHandler = require('express-async-handler')
 const Work = require('../models/workModel')
 // const User = require('../models/userModel')
 
+// @desc    Get All bookings
+// @route   GET /api/works/all
+// @access  Public
+const getAllWorkOrders = asyncHandler(async (req, res) => {
+  const works = await Work.find()
+
+  res.status(200).json(works)
+})
+
 // @desc    Get bookings
-// @route   GET /api/goals
+// @route   GET /api/works
 // @access  Private
 const getWorkOrders = asyncHandler(async (req, res) => {
   const works = await Work.find({ user: req.user.id })
@@ -13,7 +22,7 @@ const getWorkOrders = asyncHandler(async (req, res) => {
 })
 
 // @desc    Add booking
-// @route   POST /api/goals
+// @route   POST /api/works
 // @access  Private
 const addWork = asyncHandler(async (req, res) => {
   if (
@@ -68,5 +77,6 @@ const deleteWork = asyncHandler(async (req, res) => {
 module.exports = {
   getWorkOrders,
   addWork,
-  deleteWork
+  deleteWork,
+  getAllWorkOrders
 }
