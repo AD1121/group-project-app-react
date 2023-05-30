@@ -59,9 +59,9 @@ const Register: React.FC<RegisterFormProps> = ({ onRegister }) => {
           <span></span>
           <label>Password</label>
         </div>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Register" />
         <div className="signup_link">
-          Already a member? <a onClick={()=>navigate('/login')}>Signup</a>
+          Already a member? <a  onClick={()=>navigate('/login')}>Signup</a>
         </div>
       </form>
     </div>
