@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api/works', require('./routes/workRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve()
   app.use(express.static(path.join(__dirname, 'frontend/build')))
 
