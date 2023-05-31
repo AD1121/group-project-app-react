@@ -1,13 +1,13 @@
-const express = require('express')
-const serverless = require('netlify-lambda')
+// YOUR_BASE_DIRECTORY/netlify/functions/api.ts
 
-const app = express()
+import express, { Router } from 'express'
+import serverless from 'serverless-http'
 
-// Set up your Express middleware, routes, and other configurations here
+const api = express()
 
-// Example route
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from the serverless function!' })
-})
+const router = Router()
+router.get('/hello', (req, res) => res.send('Hello World!'))
 
-exports.handler = serverless(app)
+api.use('/api/', router)
+
+export const handler = serverless(api)
